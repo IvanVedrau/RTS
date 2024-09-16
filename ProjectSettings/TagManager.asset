@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Villager
+  - Tree
+  - Main Building
   layers:
   - Default
   - TransparentFX

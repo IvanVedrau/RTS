@@ -83,7 +83,7 @@ public class DragClick : MonoBehaviour
 
     void SelectUnits()
     {
-        foreach(var unit in UnitSelections.Instance.unitList)
+        foreach(GameObject unit in UnitSelections.Instance.unitList)
         {
             if (selectionBox.Contains(myCam.WorldToScreenPoint(unit.transform.position)))
             {

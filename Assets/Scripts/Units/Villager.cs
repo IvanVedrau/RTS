@@ -6,28 +6,17 @@ using UnityEngine.AI;
 
 public class Villager : MovableObject
 {
-    Camera myCam;
-    NavMeshAgent myAgent;
-    public Material stM;
-    Material _m;
 
-    void Start()
+    protected override void Start()
     {
-        myCam = Camera.main;
-        myAgent = GetComponent<NavMeshAgent>();
+        base.Start();
         gameObject.tag = "Villager";
-        UnitSelections.Instance.unitList.Add(this.gameObject);
-  
-        _m = Instantiate(stM);
-        GetComponent<Renderer>().material = _m;
+ 
     }
 
-    void Update()
+    protected override void Update()
     {
-        if (IsSelected(this.gameObject)) {
-            Move(myCam, myAgent);
-        }
-        if(UnitSelections.Instance.unitSelectedList.Contains(this.gameObject)) _m.SetColor("_Color", Color.green);
-        else _m.SetColor("_Color", Color.white);   
+        base.Update();
     }
+
 }

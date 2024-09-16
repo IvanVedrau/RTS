@@ -27,6 +27,7 @@ public class UnitSelections : MonoBehaviour
 
         if (unitSelectedList.Contains(unit))
         {
+            DeselectAll();
             foreach(var element in unitList){
                 if (element.gameObject.tag.Equals(unit.gameObject.tag)) unitSelectedList.Add(element);
             }

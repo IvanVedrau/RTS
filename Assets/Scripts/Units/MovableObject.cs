@@ -4,13 +4,17 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.AI;
 
-public abstract class MovableObject : MonoBehaviour
+public abstract class MovableObject : RTSObject
 {
-
     public LayerMask ground;
-    public bool IsSelected(GameObject unit)
+    protected Camera myCam;
+    protected NavMeshAgent myAgent;
+
+    protected override void Start()
     {
-        return UnitSelections.Instance.unitSelectedList.Contains(unit);
+        base.Start();
+        myCam = Camera.main;
+        myAgent = GetComponent<NavMeshAgent>();
     }
 
     public void Move(Camera cam, NavMeshAgent agent)
@@ -26,6 +30,16 @@ public abstract class MovableObject : MonoBehaviour
             }
         }
 
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (IsSelected())
+        {
+            Move(myCam, myAgent);
+
+        }
     }
 
 }
