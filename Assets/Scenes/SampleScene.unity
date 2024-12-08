@@ -423,6 +423,13 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 128
+  resource:
+    serializedVersion: 2
+    m_Bits: 512
+  cc:
+    serializedVersion: 2
+    m_Bits: 8
+  baseBuild: {fileID: 959199620}
 --- !u!136 &77240073
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -699,7 +706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8080584501923237755, guid: 7da68e99c509bab40a8d81b599882654, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8080584501923237755, guid: 7da68e99c509bab40a8d81b599882654, type: 3}
       propertyPath: m_IsActive
@@ -1591,7 +1598,7 @@ GameObject:
   - component: {fileID: 959199621}
   - component: {fileID: 959199626}
   - component: {fileID: 959199625}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Main Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1830,6 +1837,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c6972feb333aa4eb1b491e0cbcdc79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  scrollSpeed: 2
+  rotSpeed: 2
+  maxGroundDis: 20
+  maxOutRot: 40
+  minInRot: 15
 --- !u!1 &982706369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,6 +2563,13 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 128
+  resource:
+    serializedVersion: 2
+    m_Bits: 512
+  cc:
+    serializedVersion: 2
+    m_Bits: 8
+  baseBuild: {fileID: 959199620}
 --- !u!195 &1724305397
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2630,6 +2650,13 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 128
+  resource:
+    serializedVersion: 2
+    m_Bits: 512
+  cc:
+    serializedVersion: 2
+    m_Bits: 8
+  baseBuild: {fileID: 959199620}
 --- !u!136 &1799058443
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2907,6 +2934,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efe3ec9df25a5748926be91d95b0a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2112182962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2112182964}
+  - component: {fileID: 2112182963}
+  m_Layer: 0
+  m_Name: FogOfWar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2112182963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112182962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5de54c084f472845b61ee9a97cb8a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fogRevealers:
+  - revealerTransform: {fileID: 1724305395}
+    sightRange: 10
+    updateOnlyOnMove: 1
+    lastSeenAt: {x: 0, y: 0}
+  - revealerTransform: {fileID: 1799058446}
+    sightRange: 10
+    updateOnlyOnMove: 1
+    lastSeenAt: {x: 0, y: 0}
+  - revealerTransform: {fileID: 77240076}
+    sightRange: 10
+    updateOnlyOnMove: 1
+    lastSeenAt: {x: 0, y: 0}
+  - revealerTransform: {fileID: 2133439303}
+    sightRange: 10
+    updateOnlyOnMove: 1
+    lastSeenAt: {x: 0, y: 0}
+  levelMidPoint: {fileID: 1007092698}
+  FogRefreshRate: 10
+  fogPlaneHeight: 1
+  fogPlaneMaterial: {fileID: 2100000, guid: 36b93ac6fcf129c449491654e397fe4a, type: 2}
+  fogColor: {r: 0.019607844, g: 0.05882353, b: 0.09803922, a: 1}
+  fogPlaneAlpha: 1
+  fogLerpSpeed: 2.5
+  keepRevealedTiles: 1
+  revealedTileOpacity: 0.5
+  fogPlaneTextureLerpTarget: {fileID: 0}
+  fogPlaneTextureLerpBuffer: {fileID: 0}
+  LevelDataToLoad: {fileID: 0}
+  saveDataOnScan: 1
+  levelNameToSave: Default
+  levelDimensionX: 75
+  levelDimensionY: 75
+  unitScale: 1
+  scanSpacingPerUnit: 0.25
+  rayStartHeight: 5
+  rayMaxDistance: 10
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  ignoreTriggers: 1
+  drawGizmos: 0
+  LogOutOfRange: 0
+--- !u!4 &2112182964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112182962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.9122, y: -1282.2244, z: 1764.8813}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2133439297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,6 +3079,13 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 128
+  resource:
+    serializedVersion: 2
+    m_Bits: 512
+  cc:
+    serializedVersion: 2
+    m_Bits: 8
+  baseBuild: {fileID: 959199620}
 --- !u!136 &2133439300
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3077,3 +3198,4 @@ SceneRoots:
   - {fileID: 561491813}
   - {fileID: 483400638}
   - {fileID: 43221059}
+  - {fileID: 2112182964}
