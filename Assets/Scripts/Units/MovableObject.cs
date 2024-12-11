@@ -10,6 +10,8 @@ public abstract class MovableObject : RTSObject
     protected Camera myCam;
     protected NavMeshAgent myAgent;
 
+    public bool isCommandedToMove;
+
     protected override void Start()
     {
         base.Start();
@@ -26,9 +28,13 @@ public abstract class MovableObject : RTSObject
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
             {
+                isCommandedToMove = true;
                 agent.SetDestination(hit.point);
             }
         }
+
+        if (agent.hasPath == false || agent.remainingDistance <= agent.stoppingDistance)
+            isCommandedToMove = false;
 
     }
 
@@ -40,6 +46,7 @@ public abstract class MovableObject : RTSObject
             Move(myCam, myAgent);
 
         }
+
     }
 
 }
