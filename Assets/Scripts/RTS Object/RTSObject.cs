@@ -21,6 +21,12 @@ public abstract class RTSObject : MonoBehaviour
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
+    public void Deselect()
+    {
+        UnitSelections.Instance.unitSelectedList.Remove(gameObject);
+        HideSelectionCircle();
+    } 
+
 
     protected virtual void Start()
     {

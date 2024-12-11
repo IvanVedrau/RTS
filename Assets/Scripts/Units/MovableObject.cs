@@ -9,6 +9,10 @@ public abstract class MovableObject : RTSObject
     public LayerMask ground;
     protected Camera myCam;
     protected NavMeshAgent myAgent;
+    public int health;
+    public int armour;
+    public int damage;
+
 
     protected override void Start()
     {
@@ -17,7 +21,7 @@ public abstract class MovableObject : RTSObject
         myAgent = GetComponent<NavMeshAgent>();
     }
 
-    public void Move(Camera cam, NavMeshAgent agent)
+    public virtual void Move(Camera cam, NavMeshAgent agent)
     {
         if (Input.GetMouseButtonDown(1))
         {
